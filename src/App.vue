@@ -6,6 +6,11 @@
 <!-- 태그 안에서 데이터 바인딩 할때는 콧수염 안에 넣어야하고, 속성 문법 안에서 할때는 : 하고 하면 됌 <h4 class = "red" : style ="스타일"> -->
 <!-- var 어레이 = [10,20,30]; -->
 
+<div v-for = "(a,i) in products" :key="i">
+  <h4>{{products[i]}}</h4>
+  
+</div>
+
 <div class = "menu">
   <p>Home</p>
   <p>Products</p>
@@ -16,7 +21,7 @@
 </div>
 
 <div>
-<h4 v-for = 'i in products' : key="i">{{i}}</h4>
+<h4 v-for = "i in products" :key="i">{{i}}</h4>
 </div>
 
 <div class = "menu">

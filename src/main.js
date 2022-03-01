@@ -1,4 +1,4 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import EventHandler from './EventHandler.vue'
 
-createApp(App).mount('#app')
+createApp(EventHandler).mount('#app')
