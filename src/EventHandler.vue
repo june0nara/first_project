@@ -3,8 +3,12 @@
 <!-- 모달창 ui를 미리 만들어놔야 뛰우루수 있어 -->
 <div class = "black-bg" v-if = "모달창열렸니 == true" >
   <div class = "white-bg">
-    <h4>상세페이지임</h4>
-    <p>상세페이지 내용임</p>
+    <h4>{{원룸들[누른거].title}}</h4>
+    <img :src="원룸들[누른거].image" calss="room-img">
+
+    <p>{{원룸들[누른거].content}}</p>
+    <p>{{원룸들[누른거].price}}</p>
+    <button @click="모달창열렸니 = false">닫기</button>
   </div>
 </div>
 
@@ -23,15 +27,19 @@
 
 
 
-
+<div v-for = "(작명,i) in 원룸들" :key='i'>
+  <img :src="원룸들[i].image" class="room-img">
+  <h4 @click = "모달창열렸니 = true; 누른거 = i">{{원룸들[i].title}} 원룸</h4>
+  <p> {{원룸들[i].price}}</p>
+</div>
 
 
 
 
 <div>
   <img src = "./assets/logo.png"> 
-  <h4 @click = "모달창열렸니 = true">{{products[1]}} 원룸</h4>
-  <p> 60 만원</p>
+  <h4 @click = "모달창열렸니 = true">{{원룸들[0].title}} 원룸</h4>
+  <p> {{원룸들[0].price}}</p>
   <button @click ="신고수[0]+=1">허위매물신고</button> <span>신고수 : {{신고수[0]}}</span>
 </div>
 <!-- ++는 어떤 변수에다가 1 더해주라는 뜻. +1로 하면 안된다 +=1 -->
@@ -52,11 +60,15 @@
 
 <script>
 
+import data from './oneroom.js'
+
 
 export default {
   name: 'App',
   data(){
     return {
+      누른거 : 0,
+      원룸들 : data,
       모달창열렸니 : false,
       // 모달창만드는과정1, 모달창이 현재 열렸는지 닫혔는지 모달창에 현재 상태를 먼저 정의해주어야해 true false / 0 1
       신고수 : [0,0,0],
