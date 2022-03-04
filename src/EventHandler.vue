@@ -1,24 +1,19 @@
 <template>
 
 <!-- 모달창 ui를 미리 만들어놔야 뛰우루수 있어 -->
-<div class = "black-bg" v-if = "모달창열렸니 == true" >
-  <div class = "white-bg">
-    <h4>{{원룸들[누른거].title}}</h4>
-    <img :src="원룸들[누른거].image" calss="room-img">
 
-    <p>{{원룸들[누른거].content}}</p>
-    <p>{{원룸들[누른거].price}}</p>
-    <button @click="모달창열렸니 = false">닫기</button>
-  </div>
-</div>
+<Modal :원룸들 = "원룸들" :누른거 = "누른거" :모달창열렸니 = "모달창열렸니" />
+<!-- :콜론이 = v-bind랑 같은거야, html 데이터 묶을때도 쓰지만 데이터 전송에도 쓰인다 -->
 
 
 <div class = "menu">
   <p>Home</p>
   <p>Products</p>
   <p>About</p>
+  <Modal></Modal>
 </div>
 
+<Discount></Discount>
 
 <div class = "menu">
   <p v-for= "(a,i) in 메뉴들" :key="i">{{i}}</p>
@@ -27,11 +22,16 @@
 
 
 
+
+<Discount/>
+
 <div v-for = "(작명,i) in 원룸들" :key='i'>
   <img :src="원룸들[i].image" class="room-img">
   <h4 @click = "모달창열렸니 = true; 누른거 = i">{{원룸들[i].title}} 원룸</h4>
   <p> {{원룸들[i].price}}</p>
 </div>
+<Modal></Modal>
+<!-- 모달(자식)이 부모 컴퍼넌트가 갖고 있는 데이터를 쓰고 싶다면 props로 데이터 전송해야함  -->
 
 
 
@@ -60,7 +60,9 @@
 
 <script>
 
-import data from './oneroom.js'
+import data from './oneroom.js';
+import Discount from './Discount.vue';
+import Modal from './Modal.vue';
 
 
 export default {
@@ -86,9 +88,13 @@ export default {
       },
     increase3(){
       this.신고수[2] += 1;
-      } 
+      }, 
+    },
+   components: {
+      Discount : Discount,
+      Modal : Modal,
     }
-  } 
+  }
   // 이거 신고수 += 1 그대로 돌리면 에러 난다, 신고수 정의해달라고 계속 에러남, 함수안에서 데이터 쓸땐(신고수, 메뉴들, products 쓰고 싶으면 무조건 this 써줘야해) this.데이터명
 
 </script>
@@ -134,7 +140,13 @@ div {
   border-radius: 8px;
   padding: 20px;
 }
+
+.discount {
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+
+}
+/* 아무거나 컴포넌트로 축약하는거 좋치 안 */
 </style>
-
-
-
