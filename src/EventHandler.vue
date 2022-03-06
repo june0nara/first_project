@@ -10,10 +10,8 @@
   <p>Home</p>
   <p>Products</p>
   <p>About</p>
-  <Modal></Modal>
 </div>
 
-<Discount></Discount>
 
 <div class = "menu">
   <p v-for= "(a,i) in 메뉴들" :key="i">{{i}}</p>
@@ -38,7 +36,11 @@
 
 <div>
   <img src = "./assets/logo.png"> 
-  <h4 @click = "모달창열렸니 = true">{{원룸들[0].title}} 원룸</h4>
+  <h4 @click = "모달창열렸니 = true">{{원룸들[0].title}} 원룸
+
+
+    
+  </h4>
   <p> {{원룸들[0].price}}</p>
   <button @click ="신고수[0]+=1">허위매물신고</button> <span>신고수 : {{신고수[0]}}</span>
 </div>
