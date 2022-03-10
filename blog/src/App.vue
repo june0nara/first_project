@@ -36,34 +36,35 @@
   </div>
 </nav> 
 
-<List></List>
-<Blog></Blog>
-
 <div class = "container mt-4">
   <h5>React 개발자의 블로그입니다</h5>
   <p> - Vue로 만들었지롱 - </p>
 </div>
+<br>
+<br>
+<List :블로그글 = "블로그글"/>
 
-<List : blog = "blog"
+
+
+
+<!-- <List : Blog = "Blog"></List> -->
 
 </template>
 
 <script>
 import List from './components/List.vue';
-import Blog from './assets/blog.js' ;
+import blog from './assets/blog.js';
  
 export default {
   name: 'App',
   data(){
     return {
-
+      블로그글 : blog,
     }
   },
   components: {
     List : List,
-    Blog : Blog,
-
-  }
+  },
 }
 </script>
 

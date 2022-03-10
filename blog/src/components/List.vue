@@ -1,15 +1,15 @@
 <template>
   <div>
-      <h4>{{blog[0].title}}</h4>
-      <p>{{blog[0].date}}</p>
+      <h4>{{블로그글[0].title}}</h4>
+      <p>{{블로그글[0].date}}</p>
   </div>
   <div>
-      <h4>{{blog[1].title}}</h4>
-      <p>{{blog[1].date}}</p>
+      <h4>{{블로그글[1].title}}</h4>
+      <p>{{블로그글[1].date}}</p>
   </div>
   <div>
-      <h4>{{blog[2].title}}</h4>
-      <p>{{blog[2].date}}</p>
+      <h4>{{블로그글[2].title}}</h4>
+      <p>{{블로그글[2].date}}</p>
   </div>
 </template>
 
@@ -17,7 +17,7 @@
 export default {
     name : 'list',
     props : {
-        Blog : Array,
+        블로그글 : Array,
     }
 
 }
